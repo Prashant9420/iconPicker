@@ -8,7 +8,9 @@ import { Unstable_Popup as BasePopup } from '@mui/base';
 function IconPicker({ rowsInOnePage, columnsInOnePage, iconHeight, iconWidth, pickerHeight, pickerWidth, setterFunction }) {
     const [anchor, setAnchor] = React.useState(null);
     const [currentPage, setCurrentPage] = useState(0);
-    const iconsPerPage = rowsInOnePage * columnsInOnePage;
+    const nRows = Math.floor(pickerHeight / iconHeight);
+    const nColumns = Math.floor(pickerWidth / iconWidth);
+    const iconsPerPage = nRows * nColumns;
     const totalPages = Math.ceil(iconPaths.length / iconsPerPage);
 
     const handleClick = (event) => {
@@ -52,10 +54,10 @@ function IconPicker({ rowsInOnePage, columnsInOnePage, iconHeight, iconWidth, pi
                 <BasePopup id={id} open={open} anchor={anchor}>
                     <table style={{ backgroundColor: "white", borderRadius: "10px", margin: "10px", padding: "10px", paddingBottom: '100px', position: 'relative' }}>
                         <tbody>
-                        {[...Array(rowsInOnePage)].map((_, rowIndex) => (
+                        {[...Array(nRows)].map((_, rowIndex) => (
                                 <tr key={rowIndex}>
-                                    {[...Array(columnsInOnePage)].map((_, colIndex) => {
-                                        const iconIndex = rowIndex * columnsInOnePage + colIndex;
+                                    {[...Array(nColumns)].map((_, colIndex) => {
+                                        const iconIndex = rowIndex * nColumns + colIndex;
                                         const iconPath = iconsForCurrentPage[iconIndex];
                                         return (
                                             <td key={colIndex} style={{ margin: "10px", cursor: "pointer" }} onClick={() => handleIconClick(iconPath)}>
