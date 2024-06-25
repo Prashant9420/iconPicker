@@ -1,0 +1,16 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+#iconContainer{
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin:10px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+}
