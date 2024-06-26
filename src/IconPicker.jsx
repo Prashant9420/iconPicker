@@ -8,8 +8,8 @@ import { Unstable_Popup as BasePopup } from '@mui/base';
 function IconPicker({ rowsInOnePage, columnsInOnePage, iconHeight, iconWidth, pickerHeight, pickerWidth, setterFunction }) {
     const [anchor, setAnchor] = React.useState(null);
     const [currentPage, setCurrentPage] = useState(0);
-    const nRows = Math.floor(pickerHeight / iconHeight);
-    const nColumns = Math.floor(pickerWidth / iconWidth);
+    const nRows = (Math.floor(pickerHeight / iconHeight))<rowsInOnePage?(Math.floor(pickerHeight / iconHeight)):rowsInOnePage;
+    const nColumns = (Math.floor(pickerWidth / iconWidth))<columnsInOnePage?(Math.floor(pickerWidth / iconWidth)):columnsInOnePage;
     const iconsPerPage = nRows * nColumns;
     const totalPages = Math.ceil(iconPaths.length / iconsPerPage);
 
